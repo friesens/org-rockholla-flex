@@ -1,6 +1,6 @@
-.DS_Store
-/bin-release/
-/.settings/
-.project
 .actionScriptProperties
+.DS_Store
 .flexLibProperties
+.project
+/.settings
+/bin-release
