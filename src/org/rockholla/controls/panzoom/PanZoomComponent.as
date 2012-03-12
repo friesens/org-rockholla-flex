@@ -31,7 +31,6 @@ package org.rockholla.controls.panzoom
 	import mx.events.ScrollEventDirection;
 	import mx.managers.CursorManager;
 	
-	import org.rockholla.controls.panzoom.tools.PanZoomTools;
 	import org.rockholla.events.PanZoomEvent;
 	import org.rockholla.utils.MouseWheelHandler;
 	
@@ -150,8 +149,6 @@ package org.rockholla.controls.panzoom
 		 * panned and zoomed.
 		 */
 		protected var _content:PanZoomContent;
-		
-		protected var _tools:PanZoomTools = new PanZoomTools();
 		
 		/**
 		 * The minimum zoom level allowed (where 1 is actual size, 100%)
@@ -362,8 +359,6 @@ package org.rockholla.controls.panzoom
 			this.addChild(this._vScrollBar);
 			this.addChild(this._hScrollBar);
 			this.addChild(this._bottomRightMask);
-			this.addChild(this._tools);
-			
 		}
 		
 		/**
@@ -379,9 +374,6 @@ package org.rockholla.controls.panzoom
 			
 			super.updateDisplayList(unscaledWidth, unscaledHeight);
 			this._updateScrollBars();
-			
-			this._tools.top = 0;
-			this._tools.right = 0 + (this.panScrollBarsVisible ? this._vScrollBar.width : 0);
 			
 		}	
 		
