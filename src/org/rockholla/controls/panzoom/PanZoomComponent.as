@@ -522,12 +522,12 @@ package org.rockholla.controls.panzoom
 		{ 
 			if(value > this._scaleMax)
 			{
-				throw new PanZoomComponentError(value + " is greater than the maxium allowed scale setting.");
+				value = this._scaleMax;
 				return;
 			}
 			if(value < this._scaleMin)
 			{
-				throw new PanZoomComponentError(value + " is less than the minimum allowed scale setting.");
+				value = this._scaleMin;
 				return;
 			}
 			this.zoom(value);
@@ -715,7 +715,7 @@ package org.rockholla.controls.panzoom
 			}
 			else
 			{
-				CursorManager.removeAllCursors();
+				CursorManager.removeCursor(_currentCursorId);
 				this._cancelNormalMouseEvents(true);
 			} 
 			
@@ -783,7 +783,7 @@ package org.rockholla.controls.panzoom
 		 */ 
 		protected function _onMouseOut(event:MouseEvent):void 
 		{ 
-			CursorManager.removeAllCursors();	
+			CursorManager.removeCursor(_currentCursorId);	
 		}
 		
 		/**
@@ -862,6 +862,8 @@ package org.rockholla.controls.panzoom
 			
 		}
 		
+		protected var _currentCursorId:int;
+		
 		/**
 		 * Sets the Flex cursor to the open hand
 		 * 
@@ -869,8 +871,8 @@ package org.rockholla.controls.panzoom
 		protected function _setCursorHandOpen():void 
 		{
 			
-			CursorManager.removeAllCursors();
-			CursorManager.setCursor(this.__iconHandOpen);
+			CursorManager.removeCursor(_currentCursorId);
+			_currentCursorId = CursorManager.setCursor(this.__iconHandOpen);
 			
 		}
 		
@@ -881,8 +883,8 @@ package org.rockholla.controls.panzoom
 		protected function _setCursorHandClosed():void 
 		{
 			
-			CursorManager.removeAllCursors();
-			CursorManager.setCursor(this.__iconHandClosed);
+			CursorManager.removeCursor(_currentCursorId);
+			_currentCursorId = CursorManager.setCursor(this.__iconHandClosed);
 			
 		}
 		
